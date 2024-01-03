@@ -1,0 +1,927 @@
+CS457L Lab(C) - Database Technologies Lab
+Name- Feven Araya(20027)
+Final Project SQL commands and output
+
+
+List of Tables 
+
+MariaDB [20027af]> select * from Worker;
++----------+-------------+-------------+-------------+----------+------------+------------+----------------+------------------------------------------------------------+----------------+
+| WorkerID | WorkerFName | WorkerMname | WorkerLname | Salary   | Birthdate  | HireDate   | YearsofService | Qualification                                              | WorkerType     |
++----------+-------------+-------------+-------------+----------+------------+------------+----------------+------------------------------------------------------------+----------------+
+|        1 | John        | A           | Smith       | 50000.00 | 1980-05-15 | 2020-02-10 |              2 | Bachelor of Science, Master of Arts                        | CollectionCrew |
+|        2 | Jane        | B           | Doe         | 55000.00 | 1985-08-20 | 2019-03-22 |              3 | Bachelor of Engineering, Master of Arts                    | SortingStaff   |
+|        3 | Robert      | C           | Johnson     | 60000.00 | 1975-12-10 | 2018-01-05 |              4 | Bachelor of Engineering, Master of Business Administration | FacultyManager |
+|        4 | Michael     | D           | Brown       | 52000.00 | 1990-03-25 | 2021-06-15 |              1 | Bachelor of Arts, Master of Business Administration        | CollectionCrew |
+|        5 | Sarah       | E           | Williams    | 54000.00 | 1988-11-30 | 2017-05-12 |              4 | Bachelor of Science, Master of Business Administration     | SortingStaff   |
+|        6 | David       | F           | Miller      | 58000.00 | 1979-07-18 | 2019-11-08 |              2 | High School Diploma, Bachelor of Science                   | FacultyManager |
+|        7 | Emily       | G           | Jones       | 51000.00 | 1992-09-03 | 2022-03-20 |              0 | High School Diploma                                        | CollectionCrew |
+|        8 | Christopher | H           | Davis       | 53000.00 | 1991-02-12 | 2020-08-30 |              1 | Bachelor of Arts, Ph.D. in Engineering                     | SortingStaff   |
+|        9 | Maria       | I           | Wilson      | 62000.00 | 1972-04-28 | 2015-12-10 |              6 | Ph.D. in Engineering                                       | FacultyManager |
+|       10 | William     | J           | Lee         | 51000.00 | 1993-12-08 | 2022-01-25 |              0 | High School Diploma                                        | CollectionCrew |
+|       11 | Amanda      | K           | Anderson    | 56000.00 | 1987-06-02 | 2016-08-05 |              5 | Bachelor of Science                                        | SortingStaff   |
+|       12 | Daniel      | L           | Moore       | 59000.00 | 1977-03-17 | 2017-02-18 |              4 | Master of Business Administration                          | FacultyManager |
+|       13 | Olivia      | M           | Taylor      | 50000.00 | 1994-10-22 | 2022-06-10 |              0 | High School Diploma                                        | CollectionCrew |
+|       14 | Matthew     | N           | Clark       | 52000.00 | 1990-08-15 | 2021-09-14 |              1 | Bachelor of Arts                                           | SortingStaff   |
+|       15 | Sophia      | O           | White       | 61000.00 | 1973-01-12 | 2014-04-05 |              7 | Ph.D. in Environmental Science                             | FacultyManager |
+|       16 | Feven       | A           | Araya       | 50000.00 | 1980-05-15 | 2020-02-10 |              2 | Bachelor of Science, Master of Arts                        | CollectionCrew |
++----------+-------------+-------------+-------------+----------+------------+------------+----------------+------------------------------------------------------------+----------------+
+16 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from User;
++--------+---------+-------+---------+---------------+--------+---------------+--------------+-------+------------+-------------+-----+
+| UserID | Fname   | Mname | Lname   | Street        | Apt_no | City          | State        | Zip   | Birth_date | Ssn         | Sex |
++--------+---------+-------+---------+---------------+--------+---------------+--------------+-------+------------+-------------+-----+
+|     16 | John    | A     | Doe     | 123 Main St   | 101    | Los Angeles   | California   | 12345 | 1990-01-01 | 111-22-3333 | M   |
+|     17 | Jane    | B     | Smith   | 456 Elm St    | 202    | New York      | New York     | 23456 | 1992-02-02 | 222-33-4444 | F   |
+|     18 | Alice   | C     | Johnson | 789 Oak St    | 303    | Chicago       | Illinois     | 34567 | 1993-03-03 | 333-44-5555 | F   |
+|     19 | Bob     | D     | Brown   | 101 Pine St   | 404    | Houston       | Texas        | 45678 | 1991-04-04 | 444-55-6666 | M   |
+|     20 | Carol   | E     | White   | 202 Birch St  | 505    | Phoenix       | Arizona      | 56789 | 1988-05-05 | 555-66-7777 | F   |
+|     21 | David   | F     | Black   | 303 Cedar St  | 606    | Philadelphia  | Pennsylvania | 67890 | 1987-06-06 | 666-77-8888 | M   |
+|     22 | Eva     | G     | Green   | 404 Spruce St | 707    | San Antonio   | Texas        | 78901 | 1989-07-07 | 777-88-9999 | F   |
+|     23 | Frank   | H     | Hall    | 505 Maple St  | 808    | San Diego     | California   | 89012 | 1985-08-08 | 888-99-0000 | M   |
+|     24 | Grace   | I     | Lee     | 606 Walnut St | 909    | Dallas        | Texas        | 90123 | 1984-09-09 | 999-00-1111 | F   |
+|     25 | Henry   | J     | Park    | 707 Cherry St | 1010   | San Jose      | California   | 01234 | 1983-10-10 | 000-11-2222 | M   |
+|     26 | Isabel  | K     | Adams   | 808 Peach St  | 1111   | Austin        | Texas        | 12340 | 1982-11-11 | 123-45-6789 | F   |
+|     27 | Jacob   | L     | Knight  | 909 Plum St   | 1212   | Jacksonville  | Florida      | 23450 | 1981-12-12 | 234-56-7890 | M   |
+|     28 | Laura   | M     | Bishop  | 111 Berry St  | 1313   | San Francisco | California   | 34560 | 1990-06-13 | 345-67-8901 | F   |
+|     29 | Michael | N     | Carter  | 222 Grape St  | 1414   | Columbus      | Ohio         | 45670 | 1989-05-14 | 456-78-9012 | M   |
+|     30 | Natalie | O     | Dixon   | 333 Melon St  | 1515   | Fort Worth    | Texas        | 56780 | 1988-04-15 | 567-89-0123 | F   |
++--------+---------+-------+---------+---------------+--------+---------------+--------------+-------+------------+-------------+-----+
+15 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from CollectionSchedule;
++------------+------------+----------+-----------+--------+--------+--------------------+
+| ScheduleID | Date       | Time     | Frequency | Zone   | UserID | NextCollectionDate |
++------------+------------+----------+-----------+--------+--------+--------------------+
+|         11 | 2023-12-10 | 08:00:00 | Daily     | Zone A |     25 | 2023-12-11         |
+|         12 | 2023-12-15 | 14:30:00 | Monthly   | Zone B |     16 | 2024-01-15         |
+|         13 | 2023-12-20 | 10:00:00 | Weekly    | Zone C |     26 | 2023-12-27         |
+|         14 | 2023-12-25 | 09:45:00 | Monthly   | Zone A |     17 | 2024-01-25         |
+|         15 | 2023-12-30 | 13:15:00 | Weekly    | Zone B |     27 | 2024-01-06         |
+|         16 | 2024-01-05 | 11:30:00 | Monthly   | Zone C |     18 | 2024-02-05         |
+|         17 | 2024-01-10 | 08:00:00 | Weekly    | Zone A |     28 | 2024-01-17         |
+|         18 | 2024-01-15 | 14:30:00 | Monthly   | Zone B |     19 | 2024-02-15         |
+|         19 | 2024-01-20 | 10:00:00 | Weekly    | Zone C |     29 | 2024-01-27         |
+|         20 | 2024-01-25 | 09:45:00 | Monthly   | Zone A |     20 | 2024-02-25         |
++------------+------------+----------+-----------+--------+--------+--------------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from Vehicle;
++-----------+-------+----------+-------------+--------------------+------------+
+| VehicleID | Type  | Capacity | ServiceDate | AssignedDrivers    | ScheduleID |
++-----------+-------+----------+-------------+--------------------+------------+
+|        11 | Truck |     5000 | 2023-12-10  | Driver1, Driver2   |         12 |
+|        12 | Van   |     3000 | 2023-12-15  | Driver3            |         14 |
+|        13 | Truck |     5000 | 2023-12-20  | Driver4            |         16 |
+|        14 | Car   |     1500 | 2023-12-25  | Driver5, Driver6   |         18 |
+|        15 | Van   |     3000 | 2023-12-30  | Driver7            |         20 |
+|        16 | Truck |     5000 | 2024-01-05  | Driver8            |         11 |
+|        17 | Car   |     1500 | 2024-01-10  | Driver9, Driver10  |         13 |
+|        18 | Van   |     3000 | 2024-01-15  | Driver11           |         15 |
+|        19 | Truck |     5000 | 2024-01-20  | Driver12           |         17 |
+|        20 | Car   |     1500 | 2024-01-25  | Driver13, Driver14 |         19 |
++-----------+-------+----------+-------------+--------------------+------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from WasteType;
++---------+-----------------------+-------------------------------------------------------------------+-------------------+--------+
+| WasteID | Description           | Instruction                                                       | WasteTypeCategory | UserID |
++---------+-----------------------+-------------------------------------------------------------------+-------------------+--------+
+|       1 | Chemical Waste        | Handle with care and use protective gear                          | Hazardous         |     25 |
+|       2 | Paper Waste           | Recycle with paper products                                       | Recyclable        |     16 |
+|       3 | Food Waste            | Compost in a designated bin                                       | Organic           |     26 |
+|       4 | Medical Waste         | Handle with extreme care and dispose of as per health regulations | Hazardous         |     17 |
+|       5 | Metal Waste           | Recycle with metal products                                       | Recyclable        |     27 |
+|       6 | Garden Waste          | Compost in a designated bin                                       | Organic           |     18 |
+|       7 | Electronic Waste      | Dispose of at electronic waste collection points                  | Hazardous         |     28 |
+|       8 | Plastic Waste         | Recycle with plastic products                                     | Recyclable        |     19 |
+|       9 | Wood Waste            | Can be used for composting or woodworking                         | Organic           |     29 |
+|      10 | Paint Waste           | Dispose of according to hazardous waste regulations               | Hazardous         |     20 |
+|      11 | Glass Waste           | Recycle with glass products                                       | Recyclable        |     30 |
+|      12 | Textile Waste         | Donate or recycle old textiles                                    | Recyclable        |     21 |
+|      13 | Yard Waste            | Compost yard waste                                                | Organic           |     22 |
+|      14 | Batteries             | Dispose of at battery recycling centers                           | Hazardous         |     23 |
+|      15 | Aluminum Cans         | Recycle aluminum cans                                             | Recyclable        |     24 |
+|      16 | Kitchen Scraps        | Compost kitchen scraps                                            | Organic           |     25 |
+|      17 | Electrical Appliances | Dispose of at electronic waste collection points                  | Hazardous         |     16 |
+|      18 | PET Bottles           | Recycle PET bottles                                               | Recyclable        |     26 |
+|      19 | Leaves and Grass      | Compost leaves and grass                                          | Organic           |     17 |
++---------+-----------------------+-------------------------------------------------------------------+-------------------+--------+
+19 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from CollectionCrew;
++----------+---------+-----------+
+| WorkerID | Route   | VehicleID |
++----------+---------+-----------+
+|        1 | Route 1 |        16 |
+|        4 | Route 2 |        11 |
+|        7 | Route 3 |        17 |
+|       10 | Route 4 |        12 |
+|       13 | Route 5 |        18 |
++----------+---------+-----------+
+5 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from SortingStaff;
++----------+---------------+-------+
+| WorkerID | Shift         | BinID |
++----------+---------------+-------+
+|        2 | Morning Shift |     1 |
+|        5 | Evening Shift |     4 |
+|        8 | Night Shift   |     7 |
+|       11 | Morning Shift |    10 |
+|       14 | Evening Shift |    13 |
++----------+---------------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from FacilityManager;
++----------+-----------+------------+
+| WorkerID | Budget    | FacilityID |
++----------+-----------+------------+
+|        3 | 100000.00 |          1 |
+|        6 | 120000.00 |          2 |
+|        9 |  90000.00 |          3 |
+|       12 | 110000.00 |          4 |
+|       15 | 130000.00 |          5 |
++----------+-----------+------------+
+5 rows in set (0.000 sec)
+
+
+
+
+MariaDB [20027af]> select * from HazardousWaste;
++---------+-------------------------------------------------------------------+
+| WasteID | HandlingProcedures                                                |
++---------+-------------------------------------------------------------------+
+|       1 | Handle with care and use protective gear                          |
+|       4 | Handle with extreme care and dispose of as per health regulations |
+|       7 | Dispose of according to hazardous waste regulations               |
+|      10 | Handle with care and use protective gear                          |
+|      13 | Handle with extreme care and dispose of as per health regulations |
+|      16 | Dispose of according to hazardous waste regulations               |
++---------+-------------------------------------------------------------------+
+6 rows in set (0.000 sec)
+
+
+
+
+
+MariaDB [20027af]> select * from RecyclableWaste;
++---------+-------------------------------+
+| WasteID | RecyclableMaterial            |
++---------+-------------------------------+
+|       2 | Recycle with paper products   |
+|       5 | Recycle with metal products   |
+|       8 | Recycle with plastic products |
+|      11 | Recycle with paper products   |
+|      14 | Recycle with metal products   |
+|      17 | Recycle with plastic products |
++---------+-------------------------------+
+6 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from OrganicWaste;
++---------+-------------------------------------------+
+| WasteID | DecompositionRate                         |
++---------+-------------------------------------------+
+|       3 | Compost in a designated bin               |
+|       6 | Compost in a designated bin               |
+|       9 | Can be used for composting or woodworking |
+|      12 | Compost in a designated bin               |
+|      15 | Compost in a designated bin               |
+|      18 | Can be used for composting or woodworking |
++---------+-------------------------------------------+
+6 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from Bin;
++-------+-----------------+---------------+----------------+-------+----------+---------+
+| BinID | Street          | City          | State          | Zip   | Capacity | WasteID |
++-------+-----------------+---------------+----------------+-------+----------+---------+
+|     1 | 123 Main St     | Los Angeles   | California     | 90001 |      100 |       1 |
+|     2 | 456 Elm St      | Dallas        | Texas          | 75001 |      150 |       2 |
+|     3 | 789 Oak St      | Jacksonville  | Florida        | 32004 |      200 |       3 |
+|     4 | 101 Pine St     | New York City | New York       | 10001 |      120 |       1 |
+|     5 | 202 Maple St    | Chicago       | Illinois       | 60007 |      180 |       2 |
+|     6 | 303 Cedar St    | Philadelphia  | Pennsylvania   | 19019 |       90 |       3 |
+|     7 | 404 Walnut St   | Atlanta       | Georgia        | 30301 |      130 |       1 |
+|     8 | 505 Birch St    | Seattle       | Washington     | 98001 |      110 |       2 |
+|     9 | 606 Redwood St  | Boston        | Massachusetts  | 02101 |      160 |       3 |
+|    10 | 707 Sequoia St  | Phoenix       | Arizona        | 85001 |      140 |       1 |
+|    11 | 808 Aspen St    | Detroit       | Michigan       | 48001 |       70 |       2 |
+|    12 | 909 Cedar St    | Columbus      | Ohio           | 43001 |      200 |       3 |
+|    13 | 1010 Pine St    | Charlotte     | North Carolina | 27006 |      220 |       1 |
+|    14 | 1111 Oak St     | Richmond      | Virginia       | 22001 |      180 |       2 |
+|    15 | 1212 Elm St     | Baltimore     | Maryland       | 21201 |      250 |       3 |
+|    16 | 1313 Maple St   | Denver        | Colorado       | 80001 |      120 |       1 |
+|    17 | 1414 Birch St   | Portland      | Oregon         | 97001 |      190 |       2 |
+|    18 | 1515 Redwood St | Las Vegas     | Nevada         | 89001 |      110 |       3 |
+|    19 | 1616 Walnut St  | Milwaukee     | Wisconsin      | 53001 |      170 |       1 |
+|    20 | 1717 Sequoia St | Minneapolis   | Minnesota      | 55001 |      130 |       2 |
++-------+-----------------+---------------+----------------+-------+----------+---------+
+20 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from HazardousBin;
++-------+-----------------------+
+| BinID | HazardousMaterialType |
++-------+-----------------------+
+|     1 | Toxic Waste           |
+|     2 | Chemical Waste        |
+|     4 | Hazardous Materials   |
+|    12 | Chemical Waste        |
+|    14 | Radioactive Materials |
+|    16 | Biological Hazard     |
+|    18 | Toxic Substances      |
++-------+-----------------------+
+7 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from RecyclableBin;
++-------+---------------------+
+| BinID | RecycleMaterialType |
++-------+---------------------+
+|     3 | Paper               |
+|     5 | Plastic             |
+|     7 | Glass               |
+|     9 | Metal               |
+|    11 | Cardboard           |
+|    13 | Electronics         |
+|    15 | Glass               |
+|    17 | Plastic             |
++-------+---------------------+
+8 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from OrganicBin;
++-------+-------------------------+
+| BinID | CompostableMaterialType |
++-------+-------------------------+
+|     6 | Food Waste              |
+|     8 | Yard Waste              |
+|    10 | Organic Debris          |
+|    19 | Kitchen Scraps          |
+|    20 | Leaves and Branches     |
++-------+-------------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from Processing;
++----------------+------------+--------------+-----------+----------+----------+-------+
+| ProcessingType | Date       | Method       | StartTime | EndTime  | Duration | BinID |
++----------------+------------+--------------+-----------+----------+----------+-------+
+|              1 | 2023-12-10 | Recycling    | 08:00:00  | 10:30:00 | 02:30:00 |     1 |
+|              1 | 2023-12-14 | Recycling    | 09:30:00  | 11:15:00 | 01:45:00 |     3 |
+|              1 | 2023-12-20 | Incineration | 15:00:00  | 16:45:00 | 01:45:00 |     6 |
+|              1 | 2023-12-24 | Composting   | 11:00:00  | 12:15:00 | 01:15:00 |     8 |
+|              2 | 2023-12-12 | Incineration | 14:00:00  | 16:30:00 | 02:30:00 |     2 |
+|              2 | 2023-12-18 | Recycling    | 08:30:00  | 10:00:00 | 01:30:00 |     5 |
+|              2 | 2023-12-26 | Recycling    | 07:45:00  | 09:30:00 | 01:45:00 |     9 |
+|              3 | 2023-12-16 | Composting   | 10:45:00  | 12:00:00 | 01:15:00 |     4 |
+|              3 | 2023-12-22 | Recycling    | 09:15:00  | 11:30:00 | 02:15:00 |     7 |
+|              3 | 2023-12-28 | Incineration | 14:15:00  | 16:00:00 | 01:45:00 |    10 |
++----------------+------------+--------------+-----------+----------+----------+-------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from WasteProcessingFacility;
++------------+------------------------------+---------------+-------+-------+--------------------+------------------------------------------+
+| FacilityID | Name                         | City          | State | Zip   | OperatingHours     | ComplianceCert                           |
++------------+------------------------------+---------------+-------+-------+--------------------+------------------------------------------+
+|          1 | Green Recycle Hub            | Sacramento    | CA    | 12345 | 9:00 AM - 5:00 PM  | RecycleCert123, HealthSafetyCert456      |
+|          2 | Eco Waste Solutions          | Austin        | TX    | 23456 | 8:00 AM - 4:00 PM  | EnviroCert789, WasteHandlerCert101       |
+|          3 | Urban Recycling Center       | Chicago       | IL    | 34567 | 10:00 AM - 6:00 PM | ComplianceCert202, SafetyCert303         |
+|          4 | Clean Energy Processors      | Miami         | FL    | 45678 | 9:30 AM - 5:30 PM  | EnergyCert404, QualityCert505            |
+|          5 | Eco-Friendly Disposal        | Seattle       | WA    | 56789 | 7:30 AM - 3:30 PM  | EcoCert606, HealthCert707                |
+|          6 | Renewable Waste Management   | Denver        | CO    | 67890 | 8:30 AM - 4:30 PM  | RenewCert808, SafetyCert909              |
+|          7 | Sustainable Waste Services   | Boston        | MA    | 78901 | 9:00 AM - 5:00 PM  | SustainCert010, EnviroHealthCert111      |
+|          8 | Advanced Recycling Plant     | San Francisco | CA    | 89012 | 8:00 AM - 4:00 PM  | AdvancedCert212, QualityAssuranceCert313 |
+|          9 | EcoMax Waste Handlers        | Las Vegas     | NV    | 90123 | 10:00 AM - 6:00 PM | MaxCert414, ComplianceMaxCert515         |
+|         10 | GreenTech Recycling Facility | New York      | NY    | 01234 | 9:30 AM - 5:30 PM  | TechCert616, HealthComplianceCert717     |
++------------+------------------------------+---------------+-------+-------+--------------------+------------------------------------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from Notification;
++----------------+------------+------------+------------+
+| NotificationID | FeedBackID | ReminderID | FacilityID |
++----------------+------------+------------+------------+
+|              1 |          1 |          1 |          1 |
+|              2 |          2 |          2 |          1 |
+|              3 |          3 |          3 |          2 |
+|              4 |          4 |          4 |          2 |
+|              5 |          5 |          5 |          3 |
+|              6 |          6 |          6 |          3 |
+|              7 |          7 |          7 |          4 |
+|              8 |          8 |          8 |          4 |
+|              9 |          9 |          9 |          5 |
+|             10 |         10 |         10 |          5 |
++----------------+------------+------------+------------+
+10 rows in set (0.000 sec)
+
+
+
+
+MariaDB [20027af]> select * from RewardSystem;
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | RedemptionOptions                 | NotificationID |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+|        1 |         1000 |            100 |             900 | 10% discount on electronics       |              1 |
+|        2 |         2000 |            200 |            1800 | Free shipping on next order       |              2 |
+|        3 |         3000 |            300 |            2700 | VIP access to sale events         |              3 |
+|        4 |         4000 |            400 |            3600 | Double points on next purchase    |              4 |
+|        5 |         5000 |            500 |            4500 | Free eco-friendly tote bag        |              5 |
+|        6 |         6000 |            600 |            5400 | Complimentary product sample pack |              6 |
+|        7 |         7000 |            700 |            6300 | Priority customer support         |              7 |
+|        8 |         8000 |            800 |            7200 | Extended warranty on products     |              8 |
+|        9 |         9000 |            900 |            8100 | Invitation to exclusive webinars  |              9 |
+|       10 |        10000 |           1000 |            9000 | Early bird access to new products |             10 |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select * from FeedbackNotification;
++------------+--------------------------------------------------------------------------------------------+---------------------+
+| FeedBackID | FeedBackDetails                                                                            | ResponseTime        |
++------------+--------------------------------------------------------------------------------------------+---------------------+
+|          1 | Waste processing efficiency improved by 10% this month.                                    | 2023-12-05 00:26:44 |
+|          2 | Achieved 95% recycling rate, exceeding our target.                                         | 2023-12-05 00:26:44 |
+|          3 | New sorting technology has reduced processing time by 20%.                                 | 2023-12-05 00:26:44 |
+|          4 | Energy consumption in waste processing reduced by 15% this quarter.                        | 2023-12-05 00:26:44 |
+|          5 | High purity of recycled materials achieved through better processing.                      | 2023-12-05 00:26:44 |
+|          6 | Waste processing facility now operating at full capacity with minimal downtime.            | 2023-12-05 00:26:44 |
+|          7 | Significant reduction in carbon emissions due to optimized waste processing.               | 2023-12-05 00:26:44 |
+|          8 | Increased user participation in recycling programs following reward system implementation. | 2023-12-05 00:26:44 |
+|          9 | Successful conversion of 60% of waste to reusable materials this month.                    | 2023-12-05 00:26:44 |
+|         10 | Effective management of hazardous waste materials observed.                                | 2023-12-05 00:26:44 |
++------------+--------------------------------------------------------------------------------------------+---------------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> select* from ReminderNotification;
++------------+------------------------------+--------------------------------------------------------------------------+
+| ReminderID | ReminderTitle                | ReminderDetails                                                          |
++------------+------------------------------+--------------------------------------------------------------------------+
+|          1 | Waste Processing Complete    | Remind reward system to allocate points for processed waste.             |
+|          2 | Waste Processed              | Notify reward system: waste processing done, time to award points.       |
+|          3 | Rewards for Waste Processing | Processed waste. Update reward system to give out points.                |
+|          4 | Points for Processed Waste   | Waste processing completed. Trigger points distribution.                 |
+|          5 | Waste Processing Rewards     | Inform reward system: Waste processed, allocate points.                  |
+|          6 | Allocate Points              | Waste successfully processed. Update reward system for point allocation. |
+|          7 | Reward Update                | Waste processing finished, remind to update user points.                 |
+|          8 | Waste-to-Points Reminder     | Processed waste ready, prompt reward system for point distribution.      |
+|          9 | Points for Processing        | Waste processing task completed. Time to award user points.              |
+|         10 | Waste Processed: Reward Time | Notify reward system: Waste processed, allocate rewards.                 |
++------------+------------------------------+--------------------------------------------------------------------------+
+10 rows in set (0.000 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Basic Commands
+1. Retrieves  all rows from the RewardSystem table where the value in the PointsEarned column greater than 5000, resulting in a list of rewards with earned points exceeding this threshold.
+
+MariaDB [20027af]> SELECT * FROM RewardSystem WHERE PointsEarned > 5000;
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | RedemptionOptions                 | NotificationID |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+|        6 |         6000 |            600 |            5400 | Complimentary product sample pack |              6 |
+|        7 |         7000 |            700 |            6300 | Priority customer support         |              7 |
+|        8 |         8000 |            800 |            7200 | Extended warranty on products     |              8 |
+|        9 |         9000 |            900 |            8100 | Invitation to exclusive webinars  |              9 |
+|       10 |        10000 |           1000 |            9000 | Early bird access to new products |             10 |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+5	rows in set (0.000 sec)
+ 
+
+
+2. Retrieve WorkerID from three different tables—CollectionCrew, SortingStaff, and FacilityManager—into a single list, appending a literal string to each ID indicating the department it originates from. It uses the UNION operator to ensure that all WorkerIDs are unique in the final result set, removing any duplicates.
+
+
+MariaDB [20027af]> SELECT * FROM RewardSystem WHERE PointsEarned;
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | RedemptionOptions                 | NotificationID |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+|        1 |         1000 |            100 |             900 | 10% discount on electronics       |              1 |
+|        2 |         2000 |            200 |            1800 | Free shipping on next order       |              2 |
+|        3 |         3000 |            300 |            2700 | VIP access to sale events         |              3 |
+|        4 |         4000 |            400 |            3600 | Double points on next purchase    |              4 |
+|        5 |         5000 |            500 |            4500 | Free eco-friendly tote bag        |              5 |
+|        6 |         6000 |            600 |            5400 | Complimentary product sample pack |              6 |
+|        7 |         7000 |            700 |            6300 | Priority customer support         |              7 |
+|        8 |         8000 |            800 |            7200 | Extended warranty on products     |              8 |
+|        9 |         9000 |            900 |            8100 | Invitation to exclusive webinars  |              9 |
+|       10 |        10000 |           1000 |            9000 | Early bird access to new products |             10 |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+
+10 rows in set (0.000 sec)
+
+ 
+
+
+
+
+3. Retrieve the total earned points and redemption options for rewards in the RewardSystem table where the redemption options include the word 'discount'. It then orders the results in descending order of net points, displaying the highest net points reward with a discount option of "10% discount on electronics".
+
+
+MariaDB [20027af]> SELECT RewardID, SUM(PointsEarned) As NetPoints, RedemptionOptions
+    -> FROM RewardSystem
+    -> WHERE RedemptionOptions LIKE '%discount%'
+    -> ORDER BY NetPoints DESC;
++----------+-----------+-----------------------------+
+| RewardID | NetPoints | RedemptionOptions           |
++----------+-----------+-----------------------------+
+|        1 |      1000 | 10% discount on electronics |
++----------+-----------+-----------------------------+
+1 row in set (0.000 sec)
+
+ 
+
+
+4. Calculate the average duration in seconds for different processing methods in the Processing table, considering only methods with a total duration exceeding 5 hours (18000 seconds). It then orders the results in descending order of average duration in seconds, displaying "Incineration" and "Recycling" as the methods with the highest average durations. 
+
+
+MariaDB [20027af]> SELECT Method, ROUND(AVG(TIME_TO_SEC(Duration)), 2) AS AvgDurationSeconds
+    -> FROM Processing
+    -> GROUP BY Method
+    -> HAVING SUM(TIME_TO_SEC(Duration)) > 18000
+    -> ORDER BY AvgDurationSeconds DESC;
++--------------+--------------------+
+| Method       | AvgDurationSeconds |
++--------------+--------------------+
+| Incineration |            7200.00 |
+| Recycling    |            7020.00 |
++--------------+--------------------+
+2 rows in set (0.000 sec)
+
+ 
+
+5. Retrieve details from the WasteProcessingFacility table, specifically for facilities located in 'Chicago', and renames the columns for clarity and to prevent ambiguity in attribute names. It uses aliasing by referring to WasteProcessingFacility as f, allowing for concise notation and resolving any potential conflicts with similar column names in other tables or subqueries.
+
+
+MariaDB [20027af]> SELECT
+    ->   f.FacilityID AS FID,
+    ->   f.Name AS FacilityName,
+    ->   f.City AS FacilityCity,
+    ->   f.State AS FacilityState,
+    ->   f.Zip AS PostalCode,
+    ->   f.OperatingHours AS HoursOfOperation,
+    ->   f.ComplianceCert AS Certifications
+    -> FROM
+    ->   WasteProcessingFacility AS f
+    -> WHERE
+    ->   f.City = 'Chicago';
++-----+------------------------+--------------+---------------+------------+--------------------+----------------------------------+
+| FID | FacilityName           | FacilityCity | FacilityState | PostalCode | HoursOfOperation   | Certifications                    |
++-----+------------------------+--------------+---------------+------------+--------------------+----------------------------------+
+|   3 | Urban Recycling Center | Chicago      | IL            | 34567      | 10:00 AM - 6:00 PM | ComplianceCert202, SafetyCert303 |
++-----+------------------------+--------------+---------------+------------+--------------------+----------------------------------+
+1	row in set (0.000 sec)
+
+
+ 
+
+
+
+
+
+
+
+
+
+2. Intermediate
+
+1. Retrieve data from the "User" and "CollectionSchedule" tables using a natural join, which combines rows where the values in the common columns match. It selects the "UserID," "Fname," and "Lname" from the "User" table and the "Date" and "Time" from the "CollectionSchedule" table, providing a list of users along with their scheduled collection dates and times.
+
+MariaDB [20027af]> SELECT 
+    ->   User.UserID, 
+    ->   User.Fname, 
+    ->   User.Lname, 
+    ->   CollectionSchedule.Date, 
+    ->   CollectionSchedule.Time
+    -> FROM 
+    ->   User
+    -> NATURAL JOIN 
+    ->   CollectionSchedule;
++--------+---------+---------+------------+----------+
+| UserID | Fname   | Lname   | Date       | Time     |
++--------+---------+---------+------------+----------+
+|     25 | Henry   | Park    | 2023-12-10 | 08:00:00 |
+|     16 | John    | Doe     | 2023-12-15 | 14:30:00 |
+|     26 | Isabel  | Adams   | 2023-12-20 | 10:00:00 |
+|     17 | Jane    | Smith   | 2023-12-25 | 09:45:00 |
+|     27 | Jacob   | Knight  | 2023-12-30 | 13:15:00 |
+|     18 | Alice   | Johnson | 2024-01-05 | 11:30:00 |
+|     28 | Laura   | Bishop  | 2024-01-10 | 08:00:00 |
+|     19 | Bob     | Brown   | 2024-01-15 | 14:30:00 |
+|     29 | Michael | Carter  | 2024-01-20 | 10:00:00 |
+|     20 | Carol   | White   | 2024-01-25 | 09:45:00 |
++--------+---------+---------+------------+----------+
+10 rows in set (0.000 sec)
+
+ 
+
+
+
+2.Use across join between the "RecyclableWaste" and "RecyclableBin" tables combines every row from the "RecyclableWaste" table with every row from the "RecyclableBin" table, resulting in a Cartesian product of all possible combinations. 
+
+
+MariaDB [20027af]> SELECT *
+    -> FROM RecyclableWaste
+    -> CROSS JOIN RecyclableBin;
++---------+-------------------------------+-------+---------------------+
+| WasteID | RecyclableMaterial            | BinID | RecycleMaterialType |
++---------+-------------------------------+-------+---------------------+
+|       2 | Recycle with paper products   |     3 | Paper               |
+|       5 | Recycle with metal products   |     3 | Paper               |
+|       8 | Recycle with plastic products |     3 | Paper               |
+|      11 | Recycle with paper products   |     3 | Paper               |
+|      14 | Recycle with metal products   |     3 | Paper               |
+|      17 | Recycle with plastic products |     3 | Paper               |
+|       2 | Recycle with paper products   |     5 | Plastic             |
+|       5 | Recycle with metal products   |     5 | Plastic             |
+|       8 | Recycle with plastic products |     5 | Plastic             |
+|      11 | Recycle with paper products   |     5 | Plastic             |
+|      14 | Recycle with metal products   |     5 | Plastic             |
+|      17 | Recycle with plastic products |     5 | Plastic             |
+|       2 | Recycle with paper products   |     7 | Glass               |
+|       5 | Recycle with metal products   |     7 | Glass               |
+|       8 | Recycle with plastic products |     7 | Glass               |
+|      11 | Recycle with paper products   |     7 | Glass               |
+|      14 | Recycle with metal products   |     7 | Glass               |
+|      17 | Recycle with plastic products |     7 | Glass               |
+|       2 | Recycle with paper products   |     9 | Metal               |
+|       5 | Recycle with metal products   |     9 | Metal               |
+|       8 | Recycle with plastic products |     9 | Metal               |
+|      11 | Recycle with paper products   |     9 | Metal               |
+|      14 | Recycle with metal products   |     9 | Metal               |
+|      17 | Recycle with plastic products |     9 | Metal               |
+|       2 | Recycle with paper products   |    11 | Cardboard           |
+|       5 | Recycle with metal products   |    11 | Cardboard           |
+|       8 | Recycle with plastic products |    11 | Cardboard           |
+|      11 | Recycle with paper products   |    11 | Cardboard           |
+|      14 | Recycle with metal products   |    11 | Cardboard           |
+|      17 | Recycle with plastic products |    11 | Cardboard           |
+|       2 | Recycle with paper products   |    13 | Electronics         |
+|       5 | Recycle with metal products   |    13 | Electronics         |
+|       8 | Recycle with plastic products |    13 | Electronics         |
+|      11 | Recycle with paper products   |    13 | Electronics         |
+|      14 | Recycle with metal products   |    13 | Electronics         |
+|      17 | Recycle with plastic products |    13 | Electronics         |
+|       2 | Recycle with paper products   |    15 | Glass               |
+|       5 | Recycle with metal products   |    15 | Glass               |
+|       8 | Recycle with plastic products |    15 | Glass               |
+|      11 | Recycle with paper products   |    15 | Glass               |
+|      14 | Recycle with metal products   |    15 | Glass               |
+|      17 | Recycle with plastic products |    15 | Glass               |
+|       2 | Recycle with paper products   |    17 | Plastic             |
+|       5 | Recycle with metal products   |    17 | Plastic             |
+|       8 | Recycle with plastic products |    17 | Plastic             |
+|      11 | Recycle with paper products   |    17 | Plastic             |
+|      14 | Recycle with metal products   |    17 | Plastic             |
+|      17 | Recycle with plastic products |    17 | Plastic             |
++---------+-------------------------------+-------+---------------------+
+48	rows in set (0.000 sec)
+
+3.Retrieve all rows from the Notification table and combines them with matching rows from the RewardSystem table using a right join based on the NotificationID column, resulting in a result set that includes all rows from the RewardSystem table and matching rows from the Notification table.
+
+MariaDB [20027af]> SELECT *
+    -> FROM RewardSystem R
+    -> RIGHT JOIN Notification N 
+    -> ON R.NotificationID = N.NotificationID;
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | RedemptionOptions                 | NotificationID | NotificationID | FeedBackID | ReminderID | FacilityID |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+|        1 |         1000 |            100 |             900 | 10% discount on electronics       |              1 |              1 |          1 |          1 |          1 |
+|        2 |         2000 |            200 |            1800 | Free shipping on next order       |              2 |              2 |          2 |          2 |          1 |
+|        3 |         3000 |            300 |            2700 | VIP access to sale events         |              3 |              3 |          3 |          3 |          2 |
+|        4 |         4000 |            400 |            3600 | Double points on next purchase    |              4 |              4 |          4 |          4 |          2 |
+|        5 |         5000 |            500 |            4500 | Free eco-friendly tote bag        |              5 |              5 |          5 |          5 |          3 |
+|        6 |         6000 |            600 |            5400 | Complimentary product sample pack |              6 |              6 |          6 |          6 |          3 |
+|        7 |         7000 |            700 |            6300 | Priority customer support         |              7 |              7 |          7 |          7 |          4 |
+|        8 |         8000 |            800 |            7200 | Extended warranty on products     |              8 |              8 |          8 |          8 |          4 |
+|        9 |         9000 |            900 |            8100 | Invitation to exclusive webinars  |              9 |              9 |          9 |          9 |          5 |
+|       10 |        10000 |           1000 |            9000 | Early bird access to new products |             10 |             10 |         10 |         10 |          5 |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+10 rows in set (0.000 sec)
+
+
+
+
+4. This SQL query in MariaDB performs a left join between the User and WasteType tables, matching them on the UserID field. It results in a list showing each user with their associated waste type(s), including users without a corresponding waste type entry.
+
+MariaDB [20027af]> SELECT 
+    ->   User.UserID, User.Fname,  User.Mname, User.Lname,WasteType.WasteID,WasteType.Description
+    -> FROM 
+    ->   User
+    -> LEFT JOIN 
+    ->   WasteType 
+    -> ON 
+    ->   User.UserID = WasteType.UserID;
++--------+---------+-------+---------+---------+-----------------------+
+| UserID | Fname   | Mname | Lname   | WasteID | Description           |
++--------+---------+-------+---------+---------+-----------------------+
+|     16 | John    | A     | Doe     |       2 | Paper Waste           |
+|     16 | John    | A     | Doe     |      17 | Electrical Appliances |
+|     17 | Jane    | B     | Smith   |       4 | Medical Waste         |
+|     17 | Jane    | B     | Smith   |      19 | Leaves and Grass      |
+|     18 | Alice   | C     | Johnson |       6 | Garden Waste          |
+|     19 | Bob     | D     | Brown   |       8 | Plastic Waste         |
+|     20 | Carol   | E     | White   |      10 | Paint Waste           |
+|     21 | David   | F     | Black   |      12 | Textile Waste         |
+|     22 | Eva     | G     | Green   |      13 | Yard Waste            |
+|     23 | Frank   | H     | Hall    |      14 | Batteries             |
+|     24 | Grace   | I     | Lee     |      15 | Aluminum Cans         |
+|     25 | Henry   | J     | Park    |       1 | Chemical Waste        |
+|     25 | Henry   | J     | Park    |      16 | Kitchen Scraps        |
+|     26 | Isabel  | K     | Adams   |       3 | Food Waste            |
+|     26 | Isabel  | K     | Adams   |      18 | PET Bottles           |
+|     27 | Jacob   | L     | Knight  |       5 | Metal Waste           |
+|     28 | Laura   | M     | Bishop  |       7 | Electronic Waste      |
+|     29 | Michael | N     | Carter  |       9 | Wood Waste            |
+|     30 | Natalie | O     | Dixon   |      11 | Glass Waste           |
++--------+---------+-------+---------+---------+-----------------------+
+19 rows in set (0.000 sec)
+
+5. The SQL query retrieves a combined list of details about waste processing by joining two tables, Processing and WasteProcessingFacility, on their common BinID and FacilityID fields. It displays the type of processing, the date it occurred, the method used, along with the facility's ID, name, operating hours, and compliance certifications for each processing record.
+
+
+MariaDB [20027af]> SELECT 
+    ->   Processing.ProcessingType, 
+    ->   Processing.Date, 
+    ->   Processing.Method, 
+    ->   WasteProcessingFacility.FacilityID, 
+    ->   WasteProcessingFacility.Name,
+    ->   WasteProcessingFacility.OperatingHours, 
+    ->   WasteProcessingFacility.ComplianceCert
+    -> FROM 
+    ->   Processing 
+    -> INNER JOIN 
+    ->   WasteProcessingFacility 
+    -> ON 
+    ->   Processing.BinID = WasteProcessingFacility.FacilityID;
++----------------+------------+--------------+------------+------------------------------+--------------------+------------------------------------------+
+| ProcessingType | Date       | Method       | FacilityID | Name                         | OperatingHours     | ComplianceCert                           |
++----------------+------------+--------------+------------+------------------------------+--------------------+------------------------------------------+
+|              1 | 2023-12-10 | Recycling    |          1 | Green Recycle Hub            | 9:00 AM - 5:00 PM  | RecycleCert123, HealthSafetyCert456      |
+|              1 | 2023-12-14 | Recycling    |          3 | Urban Recycling Center       | 10:00 AM - 6:00 PM | ComplianceCert202, SafetyCert303         |
+|              1 | 2023-12-20 | Incineration |          6 | Renewable Waste Management   | 8:30 AM - 4:30 PM  | RenewCert808, SafetyCert909              |
+|              1 | 2023-12-24 | Composting   |          8 | Advanced Recycling Plant     | 8:00 AM - 4:00 PM  | AdvancedCert212, QualityAssuranceCert313 |
+|              2 | 2023-12-12 | Incineration |          2 | Eco Waste Solutions          | 8:00 AM - 4:00 PM  | EnviroCert789, WasteHandlerCert101       |
+|              2 | 2023-12-18 | Recycling    |          5 | Eco-Friendly Disposal        | 7:30 AM - 3:30 PM  | EcoCert606, HealthCert707                |
+|              2 | 2023-12-26 | Recycling    |          9 | EcoMax Waste Handlers        | 10:00 AM - 6:00 PM | MaxCert414, ComplianceMaxCert515         |
+|              3 | 2023-12-16 | Composting   |          4 | Clean Energy Processors      | 9:30 AM - 5:30 PM  | EnergyCert404, QualityCert505            |
+|              3 | 2023-12-22 | Recycling    |          7 | Sustainable Waste Services   | 9:00 AM - 5:00 PM  | SustainCert010, EnviroHealthCert111      |
+|              3 | 2023-12-28 | Incineration |         10 | GreenTech Recycling Facility | 9:30 AM - 5:30 PM  | TechCert616, HealthComplianceCert717     |
++----------------+------------+--------------+------------+------------------------------+--------------------+------------------------------------------+
+10	ows in set (0.000 sec)
+
+
+
+1.	Advanced 
+
+1.	Use a three-way join that retrieves data from the "CollectionSchedule" and a derived table "vcc" that combines information from the "Vehicle" and "CollectionCrew" tables. It matches rows where the "ScheduleID" in both tables are equal, providing details about collection schedules and the associated vehicles, drivers, and routes.
+
+MariaDB [20027af]> SELECT *
+    -> FROM RewardSystem R
+    -> RIGHT JOIN Notification N 
+    -> ON R.NotificationID = N.NotificationID;
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | RedemptionOptions                 | NotificationID | NotificationID | FeedBackID | ReminderID | FacilityID |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+|        1 |         1000 |            100 |             900 | 10% discount on electronics       |              1 |              1 |          1 |          1 |          1 |
+|        2 |         2000 |            200 |            1800 | Free shipping on next order       |              2 |              2 |          2 |          2 |          1 |
+|        3 |         3000 |            300 |            2700 | VIP access to sale events         |              3 |              3 |          3 |          3 |          2 |
+|        4 |         4000 |            400 |            3600 | Double points on next purchase    |              4 |              4 |          4 |          4 |          2 |
+|        5 |         5000 |            500 |            4500 | Free eco-friendly tote bag        |              5 |              5 |          5 |          5 |          3 |
+|        6 |         6000 |            600 |            5400 | Complimentary product sample pack |              6 |              6 |          6 |          6 |          3 |
+|        7 |         7000 |            700 |            6300 | Priority customer support         |              7 |              7 |          7 |          7 |          4 |
+|        8 |         8000 |            800 |            7200 | Extended warranty on products     |              8 |              8 |          8 |          8 |          4 |
+|        9 |         9000 |            900 |            8100 | Invitation to exclusive webinars  |              9 |              9 |          9 |          9 |          5 |
+|       10 |        10000 |           1000 |            9000 | Early bird access to new products |             10 |             10 |         10 |         10 |          5 |
++----------+--------------+----------------+-----------------+-----------------------------------+----------------+----------------+------------+------------+------------+
+10 rows in set (0.000 sec)
+
+MariaDB [20027af]> SELECT 
+    ->   CS.*,
+    ->   VCC.*
+    -> FROM 
+    ->   CollectionSchedule CS
+    -> INNER JOIN (
+    ->   SELECT 
+    ->     V.*,
+    ->     CC.WorkerID,
+    ->     CC.Route
+    ->   FROM 
+    ->     Vehicle V
+    ->   LEFT JOIN 
+    ->     CollectionCrew CC 
+    ->   ON 
+    ->     V.VehicleID = CC.VehicleID
+    -> ) AS VCC 
+    -> ON 
+    ->   CS.ScheduleID = VCC.ScheduleID;
++------------+------------+----------+-----------+--------+--------+--------------------+-----------+-------+----------+-------------+--------------------+------------+----------+---------+
+| ScheduleID | Date       | Time     | Frequency | Zone   | UserID | NextCollectionDate | VehicleID | Type  | Capacity | ServiceDate | AssignedDrivers    | ScheduleID | WorkerID | Route   |
++------------+------------+----------+-----------+--------+--------+--------------------+-----------+-------+----------+-------------+--------------------+------------+----------+---------+
+|         11 | 2023-12-10 | 08:00:00 | Daily     | Zone A |     25 | 2023-12-11         |        16 | Truck |     5000 | 2024-01-05  | Driver8            |         11 |        1 | Route 1 |
+|         12 | 2023-12-15 | 14:30:00 | Monthly   | Zone B |     16 | 2024-01-15         |        11 | Truck |     5000 | 2023-12-10  | Driver1, Driver2   |         12 |        4 | Route 2 |
+|         13 | 2023-12-20 | 10:00:00 | Weekly    | Zone C |     26 | 2023-12-27         |        17 | Car   |     1500 | 2024-01-10  | Driver9, Driver10  |         13 |        7 | Route 3 |
+|         14 | 2023-12-25 | 09:45:00 | Monthly   | Zone A |     17 | 2024-01-25         |        12 | Van   |     3000 | 2023-12-15  | Driver3            |         14 |       10 | Route 4 |
+|         15 | 2023-12-30 | 13:15:00 | Weekly    | Zone B |     27 | 2024-01-06         |        18 | Van   |     3000 | 2024-01-15  | Driver11           |         15 |       13 | Route 5 |
+|         16 | 2024-01-05 | 11:30:00 | Monthly   | Zone C |     18 | 2024-02-05         |        13 | Truck |     5000 | 2023-12-20  | Driver4            |         16 |     NULL | NULL    |
+|         18 | 2024-01-15 | 14:30:00 | Monthly   | Zone B |     19 | 2024-02-15         |        14 | Car   |     1500 | 2023-12-25  | Driver5, Driver6   |         18 |     NULL | NULL    |
+|         20 | 2024-01-25 | 09:45:00 | Monthly   | Zone A |     20 | 2024-02-25         |        15 | Van   |     3000 | 2023-12-30  | Driver7            |         20 |     NULL | NULL    |
+|         17 | 2024-01-10 | 08:00:00 | Weekly    | Zone A |     28 | 2024-01-17         |        19 | Truck |     5000 | 2024-01-20  | Driver12           |         17 |     NULL | NULL    |
+|         19 | 2024-01-20 | 10:00:00 | Weekly    | Zone C |     29 | 2024-01-27         |        20 | Car   |     1500 | 2024-01-25  | Driver13, Driver14 |         19 |     NULL | NULL    |
++------------+------------+----------+-----------+--------+--------+--------------------+-----------+-------+----------+-------------+--------------------+------------+----------+---------+
+10 rows in set (0.001 sec)
+
+2.  Use a five-way join that retrieves data from multiple tables, including "RewardSystem," "Notification," "User," "Processing," and "WasteProcessingFacility," and performs several nested joins to link these tables together. It combines information about rewards, notifications, users, processing facilities, and processing methods, creating a comprehensive dataset with various attributes.
+
+MariaDB [20027af]> SELECT
+    ->   RN.RewardID, RN.PointsEarned, RN.PointsRedeemed, RN.AvailablePoints,
+    ->   RN.NotificationID, RN.FeedBackID, RN.ReminderID, RN.FacilityID,
+    ->   UP.Ssn, UP.Sex,
+    ->   WPF.Name, WPF.City, WPF.State, WPF.Zip,
+    ->   P.ProcessingType, P.BinID
+    -> FROM
+    ->   (
+    ->     SELECT
+    ->       RS.RewardID, RS.PointsEarned, RS.PointsRedeemed, RS.AvailablePoints,
+    ->       N.NotificationID, N.FeedBackID, N.ReminderID, N.FacilityID
+    ->     FROM
+    ->       RewardSystem RS
+    ->     INNER JOIN Notification N ON RS.NotificationID = N.NotificationID
+    ->   ) AS RN
+    -> LEFT JOIN
+    ->   (
+    ->     SELECT
+    ->       U.UserID, U.Ssn, U.Sex, P.ProcessingType, P.BinID
+    ->     FROM
+    ->       User U
+    ->     INNER JOIN Processing P ON U.UserID = P.BinID
+    ->   ) AS UP ON RN.RewardID = UP.UserID
+    -> LEFT JOIN
+    ->   WasteProcessingFacility WPF ON RN.FacilityID = WPF.FacilityID
+    -> LEFT JOIN
+    ->   Processing P ON WPF.FacilityID = P.BinID;
++----------+--------------+----------------+-----------------+----------------+------------+------------+------------+------+------+-------------------------+------------+-------+-------+----------------+-------+
+| RewardID | PointsEarned | PointsRedeemed | AvailablePoints | NotificationID | FeedBackID | ReminderID | FacilityID | Ssn  | Sex  | Name                    | City       | State | Zip   | ProcessingType | BinID |
++----------+--------------+----------------+-----------------+----------------+------------+------------+------------+------+------+-------------------------+------------+-------+-------+----------------+-------+
+|        1 |         1000 |            100 |             900 |              1 |          1 |          1 |          1 | NULL | NULL | Green Recycle Hub       | Sacramento | CA    | 12345 |              1 |     1 |
+|        2 |         2000 |            200 |            1800 |              2 |          2 |          2 |          1 | NULL | NULL | Green Recycle Hub       | Sacramento | CA    | 12345 |              1 |     1 |
+|        3 |         3000 |            300 |            2700 |              3 |          3 |          3 |          2 | NULL | NULL | Eco Waste Solutions     | Austin     | TX    | 23456 |              2 |     2 |
+|        4 |         4000 |            400 |            3600 |              4 |          4 |          4 |          2 | NULL | NULL | Eco Waste Solutions     | Austin     | TX    | 23456 |              2 |     2 |
+|        5 |         5000 |            500 |            4500 |              5 |          5 |          5 |          3 | NULL | NULL | Urban Recycling Center  | Chicago    | IL    | 34567 |              1 |     3 |
+|        6 |         6000 |            600 |            5400 |              6 |          6 |          6 |          3 | NULL | NULL | Urban Recycling Center  | Chicago    | IL    | 34567 |              1 |     3 |
+|        7 |         7000 |            700 |            6300 |              7 |          7 |          7 |          4 | NULL | NULL | Clean Energy Processors | Miami      | FL    | 45678 |              3 |     4 |
+|        8 |         8000 |            800 |            7200 |              8 |          8 |          8 |          4 | NULL | NULL | Clean Energy Processors | Miami      | FL    | 45678 |              3 |     4 |
+|        9 |         9000 |            900 |            8100 |              9 |          9 |          9 |          5 | NULL | NULL | Eco-Friendly Disposal   | Seattle    | WA    | 56789 |              2 |     5 |
+|       10 |        10000 |           1000 |            9000 |             10 |         10 |         10 |          5 | NULL | NULL | Eco-Friendly Disposal   | Seattle    | WA    | 56789 |              2 |     5 |
++----------+--------------+----------------+-----------------+----------------+------------+------------+------------+------+------+-------------------------+------------+-------+-------+----------------+-------+
+10 rows in set (0.001 sec)
+
+
+
+3. The SQL query successfully performs a three-way join between the SortingStaff, Bin, and Processing tables, matching records by BinID. It presents a consolidated view that includes the worker ID, shift times, bin details, waste IDs, and processing information, revealing both the staffing and processing activities for each bin location, with nulls displayed for any bins without processing records.
+
+MariaDB [20027af]> SELECT 
+    ->   StaffBin.WorkerID, 
+    ->   StaffBin.Shift, 
+    ->   StaffBin.BinID, 
+    ->   StaffBin.Street, 
+    ->   StaffBin.City, 
+    ->   StaffBin.State, 
+    ->   StaffBin.Zip, 
+    ->   StaffBin.WasteID,
+    ->   p.ProcessingType, 
+    ->   p.Date, 
+    ->   p.Method
+    -> FROM (
+    ->   SELECT 
+    ->     ss.WorkerID, 
+    ->     ss.Shift, 
+    ->     ss.BinID, 
+    ->     b.Street, 
+    ->     b.City, 
+    ->     b.State, 
+    ->     b.Zip, 
+    ->     b.WasteID
+    ->   FROM 
+    ->     SortingStaff ss
+    ->   INNER JOIN 
+    ->     Bin b ON ss.BinID = b.BinID
+    -> ) AS StaffBin
+    -> LEFT JOIN 
+    ->   Processing p ON StaffBin.BinID = p.BinID;
++----------+---------------+-------+----------------+---------------+----------------+-------+---------+----------------+------------+--------------+
+| WorkerID | Shift         | BinID | Street         | City          | State          | Zip   | WasteID | ProcessingType | Date       | Method       |
++----------+---------------+-------+----------------+---------------+----------------+-------+---------+----------------+------------+--------------+
+|        2 | Morning Shift |     1 | 123 Main St    | Los Angeles   | California     | 90001 |       1 |              1 | 2023-12-10 | Recycling    |
+|        5 | Evening Shift |     4 | 101 Pine St    | New York City | New York       | 10001 |       1 |              3 | 2023-12-16 | Composting   |
+|        8 | Night Shift   |     7 | 404 Walnut St  | Atlanta       | Georgia        | 30301 |       1 |              3 | 2023-12-22 | Recycling    |
+|       11 | Morning Shift |    10 | 707 Sequoia St | Phoenix       | Arizona        | 85001 |       1 |              3 | 2023-12-28 | Incineration |
+|       14 | Evening Shift |    13 | 1010 Pine St   | Charlotte     | North Carolina | 27006 |       1 |           NULL | NULL       | NULL         |
++----------+---------------+-------+----------------+---------------+----------------+-------+---------+----------------+------------+--------------+
+5 rows in set (0.000 sec)
+
+ 
+4. Use a four-way join  in nested query made by a combination of inner and left outer joins involving the "User," "WasteType," "Bin," and "Processing" tables. It retrieves user information along with the description of waste types associated with users and, if available, the corresponding processing type from bins. The subquery is used to link waste types with processing information.
+
+MariaDB [20027af]> SELECT 
+    ->   U.UserID, 
+    ->   U.Fname, 
+    ->   U.Lname, 
+    ->   WT.Description, 
+    ->   Subquery.ProcessingType
+    -> FROM 
+    ->   User AS U
+    -> INNER JOIN 
+    ->   WasteType AS WT ON U.UserID = WT.UserID
+    -> LEFT OUTER JOIN (
+    ->   SELECT 
+    ->     B.WasteID, 
+    ->     B.BinID, 
+    ->     P.ProcessingType
+    ->   FROM 
+    ->     Bin AS B
+    ->   INNER JOIN 
+    ->     Processing AS P ON B.BinID = P.BinID
+    -> ) AS Subquery ON WT.WasteID = Subquery.WasteID;
++--------+---------+---------+-----------------------+----------------+
+| UserID | Fname   | Lname   | Description           | ProcessingType |
++--------+---------+---------+-----------------------+----------------+
+|     16 | John    | Doe     | Paper Waste           |              2 |
+|     16 | John    | Doe     | Paper Waste           |              2 |
+|     16 | John    | Doe     | Paper Waste           |              1 |
+|     16 | John    | Doe     | Electrical Appliances |           NULL |
+|     17 | Jane    | Smith   | Medical Waste         |           NULL |
+|     17 | Jane    | Smith   | Leaves and Grass      |           NULL |
+|     18 | Alice   | Johnson | Garden Waste          |           NULL |
+|     19 | Bob     | Brown   | Plastic Waste         |           NULL |
+|     20 | Carol   | White   | Paint Waste           |           NULL |
+|     21 | David   | Black   | Textile Waste         |           NULL |
+|     22 | Eva     | Green   | Yard Waste            |           NULL |
+|     23 | Frank   | Hall    | Batteries             |           NULL |
+|     24 | Grace   | Lee     | Aluminum Cans         |           NULL |
+|     25 | Henry   | Park    | Chemical Waste        |              1 |
+|     25 | Henry   | Park    | Chemical Waste        |              3 |
+|     25 | Henry   | Park    | Chemical Waste        |              3 |
+|     25 | Henry   | Park    | Chemical Waste        |              3 |
+|     25 | Henry   | Park    | Kitchen Scraps        |           NULL |
+|     26 | Isabel  | Adams   | Food Waste            |              1 |
+|     26 | Isabel  | Adams   | Food Waste            |              1 |
+|     26 | Isabel  | Adams   | Food Waste            |              2 |
+|     26 | Isabel  | Adams   | PET Bottles           |           NULL |
+|     27 | Jacob   | Knight  | Metal Waste           |           NULL |
+|     28 | Laura   | Bishop  | Electronic Waste      |           NULL |
+|     29 | Michael | Carter  | Wood Waste            |           NULL |
+|     30 | Natalie | Dixon   | Glass Waste           |           NULL |
++--------+---------+---------+-----------------------+----------------+
+26 rows in set (0.001 sec)
+
+
+5. Use four-way join that combines data from the "CollectionSchedule," "Vehicle," "CollectionCrew," and "Worker" tables. It retrieves information about collection schedules, vehicles, assigned drivers, and workers, linking them through their respective foreign keys.
+MariaDB [20027af]> SELECT
+    ->   CS.ScheduleID,
+    ->   CS.Date,
+    ->   CS.Zone,
+    ->   CS.NextCollectionDate,
+    ->   CS.UserID,
+    ->   V.VehicleID,
+    ->   V.Type,
+    ->   V.Capacity,
+    ->   CC.WorkerID,
+    ->   CC.Route,
+    ->   W.WorkerFName,
+    ->   W.WorkerMname,
+    ->   W.WorkerLname
+    -> FROM
+    ->   CollectionSchedule AS CS
+    -> INNER JOIN
+    ->   Vehicle AS V ON CS.ScheduleID = V.ScheduleID
+    -> INNER JOIN
+    ->   CollectionCrew AS CC ON V.VehicleID = CC.VehicleID
+    -> INNER JOIN
+    ->   Worker AS W ON CC.WorkerID = W.WorkerID;
++------------+------------+--------+--------------------+--------+-----------+-------+----------+----------+---------+-------------+-------------+-------------+
+| ScheduleID | Date       | Zone   | NextCollectionDate | UserID | VehicleID | Type  | Capacity | WorkerID | Route   | WorkerFName | WorkerMname | WorkerLname |
++------------+------------+--------+--------------------+--------+-----------+-------+----------+----------+---------+-------------+-------------+-------------+
+|         11 | 2023-12-10 | Zone A | 2023-12-11         |     25 |        16 | Truck |     5000 |        1 | Route 1 | John        | A           | Smith       |
+|         12 | 2023-12-15 | Zone B | 2024-01-15         |     16 |        11 | Truck |     5000 |        4 | Route 2 | Michael     | D           | Brown       |
+|         13 | 2023-12-20 | Zone C | 2023-12-27         |     26 |        17 | Car   |     1500 |        7 | Route 3 | Emily       | G           | Jones       |
+|         14 | 2023-12-25 | Zone A | 2024-01-25         |     17 |        12 | Van   |     3000 |       10 | Route 4 | William     | J           | Lee         |
+|         15 | 2023-12-30 | Zone B | 2024-01-06         |     27 |        18 | Van   |     3000 |       13 | Route 5 | Olivia      | M           | Taylor      |
++------------+------------+--------+--------------------+--------+-----------+-------+----------+----------+---------+-------------+-------------+-------------+
+5 rows in set (0.001 sec)
+
+
+
+
+
+
+
+
+
+
